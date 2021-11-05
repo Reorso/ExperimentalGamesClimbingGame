@@ -5,8 +5,8 @@ using UnityEngine.Animations.Rigging;
 
 public class Limb : MonoBehaviour
 {
-    float lenght;
-    public Transform target;
+    //float lenght;
+    public GameObject target;
     public ChainIKConstraint chik;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,16 @@ public class Limb : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                Debug.Log(hit.transform.name);
+                Debug.Log("hit");
+                target.transform.position = hit.point;
+                //chik.target.position = hit.point;
+            }
+
         }
     }
 }

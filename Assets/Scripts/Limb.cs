@@ -6,21 +6,25 @@ using UnityEngine.Animations.Rigging;
 public class Limb : MonoBehaviour
 {
     //float lenght;
-    private Transform targetHL, targetHR, targetLF, targetRF;
-    public ChainIKConstraint chikHL,chikHR,chikLF,chikRF ;
-    public Transform centre;
+    private Transform targetHL, targetHR, targetLF, targetRF, centre;
+    public ChainIKConstraint chikHL, chikHR;
+    public TwoBoneIKConstraint tbcLF,tbcRF;
+    public BlendConstraint centreC;
+    private bool hipsMoving = false;
 
     // Start is called before the first frame update
     void Start()
     {
         targetHL = chikHL.data.target;
         targetHR = chikHR.data.target;
-        //targetLF = chikLF.data.target;
-      //  targetRF = chikRF.data.target;
+        targetLF = tbcLF.data.target;
+        targetRF = tbcRF.data.target;
+        centre = centreC.data.sourceObjectA;
         chikHL.weight = 0;
         chikHR.weight = 0;
-      //  chikLF.weight = 0;
-      //  chikRF.weight = 0;
+        tbcLF.weight = 0;
+        tbcRF.weight = 0;
+        centreC.weight = 0;
     }
 
     // Update is called once per frame
@@ -37,12 +41,14 @@ public class Limb : MonoBehaviour
                   Debug.Log(hit.transform.name);
                   Debug.Log("hit");
                   targetHL.position = hit.point;
+                  
                 }
                 else{
-                    //move left leg
+                    tbcLF.weight = 1;
+                    Debug.Log(hit.transform.name);
+                    Debug.Log("hit");
+                    targetLF.position = hit.point;
                 }
-
-
             }
 
         }
@@ -59,21 +65,41 @@ public class Limb : MonoBehaviour
                   targetHR.position = hit.point;
                 }
                 else{
-                  //move right leg
+                    tbcRF.weight = 1;
+                    Debug.Log(hit.transform.name);
+                    Debug.Log("hit");
+                    targetRF.position = hit.point;
                 }
 
             }
 
         }
-        else if (Input.GetMouseButton(3))
+        else if (Input.GetMouseButton(2))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Player")))
             {
+                centreC.weight = 1;
                 //move hips to mouse position constrained by limbs position
-            }
+                centre.position = hit.point;
+                hipsMoving = true;
+            } 
 
+        }
+        else if (Input.anyKeyDown)
+        {
+            chikHL.weight = 0;
+            chikHR.weight = 0;
+            centreC.weight = 0;
+            tbcLF.weight = 0;
+            tbcRF.weight = 0;
+        }
+
+        if (Input.GetMouseButtonUp(2) && hipsMoving)
+        {
+            //centreC.weight = 0;
+            hipsMoving = false;
         }
     }
 }

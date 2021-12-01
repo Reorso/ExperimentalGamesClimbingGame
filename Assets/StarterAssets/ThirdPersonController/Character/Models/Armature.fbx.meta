@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 36078ab0369161e49a29d349ae3e0739
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 21100
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
@@ -869,8 +869,8 @@ ModelImporter:
     foreArmTwist: 0
     upperLegTwist: 1
     legTwist: 0
-    armStretch: 0
-    legStretch: 0
+    armStretch: 1
+    legStretch: 1
     feetSpacing: 0
     globalScale: 1
     rootMotionBoneName: 

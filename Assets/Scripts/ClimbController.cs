@@ -10,12 +10,12 @@ public class ClimbController : MonoBehaviour
     //float lenght;
     private Transform centre;
     public TwoBoneIKConstraint[] limbs;
-    private float[] lenghts;
+    private float[] lenghts, maxlenghts;
     private bool[] locked;
     public BlendConstraint centreC;
     private bool hipsMoving = false;
     Vector3[] pointsAttached;
-    public GameObject centroid;
+    public GameObject centroid, centrebone;
     private int limbCounter = 0;
     public Camera cam;
     public GameObject[] debugs;
@@ -24,6 +24,7 @@ public class ClimbController : MonoBehaviour
     void Start()
     {
         lenghts = new float[4];
+        maxlenghts = new float[4];
         centre = centreC.data.sourceObjectA;
         pointsAttached = new Vector3[4];
         locked = new bool[4];
@@ -33,17 +34,6 @@ public class ClimbController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            foreach (var item in debugs)
-            {
-                item.GetComponent<MeshRenderer>().enabled = !item.GetComponent<MeshRenderer>().enabled;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            SceneManager.LoadScene(0);
-        }
 
 
         if (Input.GetMouseButton(0))
@@ -85,11 +75,33 @@ public class ClimbController : MonoBehaviour
                 if (Physics.Raycast(ray, out var hit, 100, LayerMask.GetMask("Centre")))
                 {
                     centreC.weight = 1;
+                    Vector3 newpos;
                     //move hips to mouse position constrained by limbs position
-                    centre.position = hit.point;
+                    newpos = hit.point;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (locked[i])
+                        {
+                            Vector3 offset = Vector3.ClampMagnitude( pointsAttached[i] - hit.point, maxlenghts[i]);
+                            offset = (pointsAttached[i] - hit.point) - offset;
+                            newpos += offset;
+                        }
+                    }
+                    centre.position = newpos;
                     hipsMoving = true;
                 }
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            foreach (var item in debugs)
+            {
+                item.GetComponent<MeshRenderer>().enabled = !item.GetComponent<MeshRenderer>().enabled;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            SceneManager.LoadScene(0);
         }
         else if (Input.anyKeyDown)
         {
@@ -109,6 +121,9 @@ public class ClimbController : MonoBehaviour
                 {
                     MoveLimb(2, hit.collider.transform.position, true);
                 }
+
+                centroid.transform.position = limbCounter >= 3 ? FindCentroid(pointsAttached) : transform.position;
+
             }
         }
         else if (Input.GetMouseButtonUp(1))
@@ -124,6 +139,7 @@ public class ClimbController : MonoBehaviour
                 {
                     MoveLimb(3, hit.collider.transform.position, true);
                 }
+                centroid.transform.position = limbCounter >= 3 ? FindCentroid(pointsAttached) : transform.position;
             }
         }
 
@@ -152,11 +168,12 @@ public class ClimbController : MonoBehaviour
         }
         else
         {
+            locked[n] = false;
             newpos = limbs[n].data.root.position + ((point - limbs[n].data.root.position).normalized * Mathf.Clamp((point - limbs[n].data.root.position).magnitude, 0, lenghts[n]));
         }
         pointsAttached[n] = newpos;
         limbs[n].data.target.position = newpos;
-        centroid.transform.position = limbCounter >= 3 ? FindCentroid(pointsAttached) : transform.position;
+        
     }
     private void ResetLimbs()
     {
@@ -173,11 +190,18 @@ public class ClimbController : MonoBehaviour
     private Vector3 FindCentroid(Vector3[] points)
     {
         var v3 = new Vector3();
-        var i = 0;
-        foreach (var variable in points)
+        int i = 0;
+        for (i = 0; i < points.Length; i++)
         {
-            v3 += variable;
-            i++;
+            //if (locked[n])
+            //{
+                v3 += points[i];
+
+            //}
+            //else
+            //{
+                
+            //}
         }
         v3 /= i;
         return v3;
@@ -187,8 +211,8 @@ public class ClimbController : MonoBehaviour
         for (int i = 0; i < limbs.Length; i++)
         {
             lenghts[i] += (limbs[i].data.tip.position - limbs[i].data.mid.position).magnitude +
-                          (limbs[i].data.root.position - limbs[i].data.mid.position).magnitude;
+                        (limbs[i].data.root.position - limbs[i].data.mid.position).magnitude;
+            maxlenghts[i] = lenghts[i] + (centrebone.transform.position - limbs[i].data.root.position).magnitude;
         }
-
     }
 }

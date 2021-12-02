@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2847786, g: 0.37131527, b: 0.49802387, a: 1}
+  m_IndirectSpecularColor: {r: 0.28477848, g: 0.3713149, b: 0.49802244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -762,7 +762,8 @@ GameObject:
   - component: {fileID: 324671642}
   - component: {fileID: 324671644}
   - component: {fileID: 324671643}
-  m_Layer: 0
+  - component: {fileID: 324671645}
+  m_Layer: 8
   m_Name: OSB Panel (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,6 +834,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324671641}
   m_Mesh: {fileID: 4300006, guid: 47616bd0cda748d4cbedcfc908506b9d, type: 3}
+--- !u!65 &324671645
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324671641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.6600008, y: 2.44, z: 0.02003467}
+  m_Center: {x: 0, y: 1.22, z: -0.010017306}
 --- !u!4 &334567979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6725500444371674235, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
@@ -2127,7 +2141,7 @@ GameObject:
   - component: {fileID: 893230496}
   - component: {fileID: 893230498}
   - component: {fileID: 893230497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OSB Panel (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2288,7 +2302,8 @@ GameObject:
   - component: {fileID: 930673533}
   - component: {fileID: 930673535}
   - component: {fileID: 930673534}
-  m_Layer: 0
+  - component: {fileID: 930673536}
+  m_Layer: 8
   m_Name: OSB Panel (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2359,6 +2374,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930673532}
   m_Mesh: {fileID: 4300006, guid: 47616bd0cda748d4cbedcfc908506b9d, type: 3}
+--- !u!65 &930673536
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930673532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.6600008, y: 2.44, z: 0.02003467}
+  m_Center: {x: 0, y: 1.22, z: -0.010017306}
 --- !u!1 &933254263 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 9d0d902f71acfe646a46cb625f815a49, type: 3}
@@ -2497,7 +2525,7 @@ GameObject:
   - component: {fileID: 1015258808}
   - component: {fileID: 1015258810}
   - component: {fileID: 1015258809}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OSB Panel (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3301,7 +3329,7 @@ GameObject:
   - component: {fileID: 1298728458}
   - component: {fileID: 1298728460}
   - component: {fileID: 1298728459}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OSB Panel (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3518,7 +3546,7 @@ GameObject:
   - component: {fileID: 1358418433}
   - component: {fileID: 1358418435}
   - component: {fileID: 1358418434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OSB Panel (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4677,7 +4705,8 @@ GameObject:
   - component: {fileID: 1878714850}
   - component: {fileID: 1878714852}
   - component: {fileID: 1878714851}
-  m_Layer: 0
+  - component: {fileID: 1878714853}
+  m_Layer: 8
   m_Name: OSB Panel (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4748,6 +4777,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878714849}
   m_Mesh: {fileID: 4300006, guid: 47616bd0cda748d4cbedcfc908506b9d, type: 3}
+--- !u!65 &1878714853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878714849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.6600008, y: 2.44, z: 0.02003467}
+  m_Center: {x: 0, y: 1.22, z: -0.010017306}
 --- !u!4 &1889037467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8469682766645859657, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
@@ -5926,13 +5968,27 @@ GameObject:
   - component: {fileID: 4690519908230198}
   - component: {fileID: 33917801672210486}
   - component: {fileID: 23465259565213334}
-  m_Layer: 0
+  - component: {fileID: 1910320297145011}
+  m_Layer: 8
   m_Name: OSB Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 69
   m_IsActive: 1
+--- !u!65 &1910320297145011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910320297145010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.6600008, y: 2.44, z: 0.02003467}
+  m_Center: {x: 0, y: 1.22, z: -0.010017306}
 --- !u!1 &1982555807876802
 GameObject:
   m_ObjectHideFlags: 0

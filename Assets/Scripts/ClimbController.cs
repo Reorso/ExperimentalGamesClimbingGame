@@ -10,8 +10,8 @@ public class ClimbController : MonoBehaviour
     //float lenght;
     private Transform centre;
     public TwoBoneIKConstraint[] limbs;
-    private float[] lenghts, maxlenghts;
-    private bool[] locked;
+    public float[] lenghts, maxlenghts;
+    public bool[] locked;
     public BlendConstraint centreC;
     private bool hipsMoving = false;
     Vector3[] pointsAttached;
@@ -75,19 +75,27 @@ public class ClimbController : MonoBehaviour
                 if (Physics.Raycast(ray, out var hit, 100, LayerMask.GetMask("Centre")))
                 {
                     centreC.weight = 1;
-                    Vector3 newpos;
                     //move hips to mouse position constrained by limbs position
-                    newpos = hit.point;
+                    bool c = false;
+                    
                     for (int i = 0; i < 4; i++)
                     {
                         if (locked[i])
                         {
-                            Vector3 offset = Vector3.ClampMagnitude( pointsAttached[i] - hit.point, maxlenghts[i]);
-                            offset = (pointsAttached[i] - hit.point) - offset;
-                            newpos += offset;
+                            Vector3 offset = hit.point - centre.position;
+                            
+                            if ((pointsAttached[i] - (limbs[i].data.root.position + offset)).magnitude > (lenghts[i]) )
+                            {
+                                print("limb num: " + i + "lenght : " + (pointsAttached[i] - limbs[i].data.root.position).magnitude);
+                                c = true;
+                            }
+                            
                         }
                     }
-                    centre.position = newpos;
+                    if (!c)
+                    {
+                        centre.position = hit.point;
+                    }
                     hipsMoving = true;
                 }
             }
@@ -113,13 +121,20 @@ public class ClimbController : MonoBehaviour
             var ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hit, 100, LayerMask.GetMask("Route")))
             {
+                
                 if (centre.position.y < hit.point.y)
                 {
-                    MoveLimb(0, hit.collider.transform.position,true);
+                    if ((hit.collider.transform.position - (limbs[0].data.root.position)).magnitude < (lenghts[0]))
+                    {
+                        MoveLimb(0, hit.collider.transform.position, true);
+                    }
                 }
                 else
                 {
-                    MoveLimb(2, hit.collider.transform.position, true);
+                    if ((hit.collider.transform.position - (limbs[2].data.root.position)).magnitude < (lenghts[2]))
+                    {
+                        MoveLimb(2, hit.collider.transform.position, true);
+                    }
                 }
 
                 centroid.transform.position = limbCounter >= 3 ? FindCentroid(pointsAttached) : transform.position;
@@ -133,11 +148,17 @@ public class ClimbController : MonoBehaviour
             {
                 if (centre.position.y < hit.point.y)
                 {
-                    MoveLimb(1, hit.collider.transform.position, true);
+                    if ((hit.collider.transform.position - (limbs[1].data.root.position)).magnitude < (lenghts[1]))
+                    {
+                        MoveLimb(1, hit.collider.transform.position, true);
+                    }
                 }
                 else
                 {
-                    MoveLimb(3, hit.collider.transform.position, true);
+                    if ((hit.collider.transform.position - (limbs[3].data.root.position)).magnitude < (lenghts[3]))
+                    {
+                        MoveLimb(3, hit.collider.transform.position, true);
+                    }
                 }
                 centroid.transform.position = limbCounter >= 3 ? FindCentroid(pointsAttached) : transform.position;
             }
@@ -210,9 +231,10 @@ public class ClimbController : MonoBehaviour
     {
         for (int i = 0; i < limbs.Length; i++)
         {
-            lenghts[i] += (limbs[i].data.tip.position - limbs[i].data.mid.position).magnitude +
+            lenghts[i] = (limbs[i].data.tip.position - limbs[i].data.mid.position).magnitude +
                         (limbs[i].data.root.position - limbs[i].data.mid.position).magnitude;
             maxlenghts[i] = lenghts[i] + (centrebone.transform.position - limbs[i].data.root.position).magnitude;
+            print(lenghts[i]);
         }
     }
 }

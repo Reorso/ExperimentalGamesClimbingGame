@@ -327,10 +327,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119688520}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024805596, y: -0.08617926, z: 0.015453335}
 --- !u!4 &119688524 stripped
 Transform:
@@ -488,11 +488,16 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191521503}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024805596, y: -0.086179405, z: 0.015453335}
+--- !u!1 &197624389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 735966631654700557, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
+  m_PrefabInstance: {fileID: 570687577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &209597461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -575,10 +580,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236228271}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024805596, y: -0.08617926, z: 0.015453335}
 --- !u!4 &256961921 stripped
 Transform:
@@ -746,10 +751,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316959051}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024811557, y: -0.086179435, z: 0.015453335}
 --- !u!1 &324671641
 GameObject:
@@ -1004,10 +1009,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463632520}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024805596, y: -0.086179376, z: 0.015453335}
 --- !u!4 &464760836 stripped
 Transform:
@@ -1548,10 +1553,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622264706}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024781754, y: -0.0861792, z: 0.015453335}
 --- !u!1 &629934540
 GameObject:
@@ -1857,10 +1862,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726662069}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024805596, y: -0.086179286, z: 0.015453335}
 --- !u!1 &735824780 stripped
 GameObject:
@@ -2001,10 +2006,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801001568}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024805596, y: -0.0861792, z: 0.015453335}
 --- !u!4 &811371993 stripped
 Transform:
@@ -3336,8 +3341,12 @@ MonoBehaviour:
   - {fileID: 503638779}
   - {fileID: 127572646}
   - {fileID: 1523150659}
+  lenghts: []
+  maxlenghts: []
+  locked: 
   centreC: {fileID: 1960143354}
   centroid: {fileID: 1630977019}
+  centrebone: {fileID: 197624389}
   cam: {fileID: 892253523}
   debugs:
   - {fileID: 1630977019}
@@ -4179,9 +4188,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630977020}
-  - component: {fileID: 1630977021}
   - component: {fileID: 1630977023}
   - component: {fileID: 1630977022}
+  - component: {fileID: 1630977021}
   m_Layer: 6
   m_Name: Centroid
   m_TagString: Untagged
@@ -4196,15 +4205,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630977019}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.946, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.0000000298, y: 0.946, z: -0.074}
+  m_LocalScale: {x: 1.41, y: 0.1, z: 1.41}
   m_Children: []
   m_Father: {fileID: 1274028472}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1630977021
-SphereCollider:
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!64 &1630977021
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4213,9 +4222,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1630977022
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4223,7 +4233,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630977019}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1630977023
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4319,10 +4329,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657324567}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024811557, y: -0.086179286, z: 0.015453335}
 --- !u!4 &1676993773 stripped
 Transform:
@@ -4342,10 +4352,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685315078}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024829438, y: -0.086179405, z: 0.015453335}
 --- !u!1 &1702380864 stripped
 GameObject:
@@ -4360,10 +4370,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702380864}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024817517, y: -0.086179316, z: 0.015453335}
 --- !u!4 &1713424367 stripped
 Transform:
@@ -4722,10 +4732,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843426324}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024805596, y: -0.086179495, z: 0.015453335}
 --- !u!1 &1865740856 stripped
 GameObject:
@@ -4740,10 +4750,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865740856}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024805596, y: -0.086179316, z: 0.015453335}
 --- !u!4 &1870222356 stripped
 Transform:
@@ -4995,10 +5005,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960950127}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.13598329
+  m_Radius: 0.26
   m_Center: {x: 0.00024805596, y: -0.086179316, z: 0.015453335}
 --- !u!4 &1964713630 stripped
 Transform:

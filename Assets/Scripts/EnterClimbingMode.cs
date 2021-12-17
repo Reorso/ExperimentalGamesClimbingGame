@@ -13,7 +13,15 @@ public class EnterClimbingMode : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<ClimbController3>().cam = cam;
+            if(other.GetComponent<ClimbController3>() != null)
+            {
+                other.GetComponent<ClimbController3>().cam = cam;
+            }
+            else
+            {
+                other.GetComponent<ClimbController>().cam = cam;
+
+            }
             other.GetComponent<ThirdPersonController>().LockCameraPosition = true;
             cam.enabled = true;
         }

@@ -89,7 +89,6 @@ public class ClimbController : MonoBehaviour
                                 print("limb num: " + i + "lenght : " + (pointsAttached[i] - limbs[i].data.root.position).magnitude);
                                 c = true;
                             }
-                            
                         }
                     }
                     if (!c)
